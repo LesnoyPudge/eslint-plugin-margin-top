@@ -27,11 +27,14 @@ export const ruleVisitors: RuleVisitors = (context) => {
                 return v.type === AST_NODE_TYPES.ImportDeclaration;
             });
 
-            const firstComment = comments?.[0];
-
             // last import or start of program
             const lineStart = lastImport ? lastImport.loc.end.line : 0;
             const rangeStart = lastImport ? lastImport.range[1] : 0;
+
+            // first comment below or at starting line
+            const firstComment = comments?.find((v) => {
+                return v.loc.start.line >= lineStart;
+            });
 
             // first code or comment
             const lineEnd = Math.min(
