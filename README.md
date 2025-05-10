@@ -1,1 +1,1 @@
-# lesnoypudge's eslint-plugin-import-margin-bottom
+# lesnoypudge's eslint-plugin-margin-top
